@@ -16,8 +16,9 @@ public class PlexStream : Stream
     internal PlexStream(IPlexBeaconPin<byte[]> link, int position = 0)
     {
         _ArrLink = link;
+        _Position = position;
     }
-    private void MoveTo(IPlexBeaconPin<byte[]> link, int position = 0)
+    private void Advance(IPlexBeaconPin<byte[]> link)
     {
         _ArrLink = link;
         _Data = _ArrLink?.Message;
@@ -39,7 +40,7 @@ public class PlexStream : Stream
             if (_ArrLink == null)
                 return 0;
 
-            MoveTo(_ArrLink.Next);
+            Advance(_ArrLink.Next);
             return Read(buffer, offset, count);
         }
 
@@ -55,6 +56,7 @@ public class PlexStream : Stream
             if (link == null)
                 return 0;
 
+            token.ThrowIfCancellationRequested();
             var taskLink = _ArrLink as ITaskPlexBeaconPin<byte[]>;
 
             if (taskLink != null)
@@ -62,7 +64,7 @@ public class PlexStream : Stream
             else
                 link = await Task.Run(() => link.Next, token);
 
-            MoveTo(link);
+            Advance(link);
             return Read(buffer, offset, count);
         }
 

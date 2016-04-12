@@ -33,7 +33,6 @@ public abstract class ConcurrentMessagePlicator<TMsg, TLink> : MessagePlicatorBa
         return true;
     }
 
-
     sealed public override void Break()
         => LinkThem(Interlocked.Exchange(ref HeldLink, null), null);
 

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>MessagePlex</id>
+        <version>0.1</version>
+        <authors>OmniKits</authors>
+        <projectUrl>https://github.com/OmniKits/MessagePlex</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>-</description>
+    </metadata>
+    <files>
+        <file src="Release\NET40\MessagePlex.dll" target="lib\net40\MessagePlex.dll" />
+        <file src="Release\NET45\MessagePlex.dll" target="lib\net45\MessagePlex.dll" />
+        <file src="Release\STD10\MessagePlex.dll" target="lib\netstandard10\MessagePlex.dll" />
+        <file src="Release\PCL\MessagePlex.dll" target="lib\portable-net40+sl5+uap+win8+wp8+wpa+dnxcore\MessagePlex.dll" />
+        <file src="Release\STD10\MessagePlex.dll" target="lib\portable-net45+uap+win8+wp8+wpa+dnxcore\MessagePlex.dll" />
+    </files>
+</package>

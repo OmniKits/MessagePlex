@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePlex.PCL", "MessagePlex.PCL\MessagePlex.PCL.csproj", "{8988D789-95BC-480B-9FF0-3F16DB469EF5}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MessagePlex", "MessagePlex\MessagePlex.shproj", "{1C6B3E22-CAC5-4326-B40D-D6A7F8EC8220}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePlex.NET45", "MessagePlex.NET45\MessagePlex.NET45.csproj", "{512E6D1E-06AC-4024-8EC4-0B0CE5D4BF29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePlex.NET40", "MessagePlex.NET40\MessagePlex.NET40.csproj", "{FD8F028D-627B-47E4-A817-5566D674A4B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePlex.STD10", "MessagePlex.STD10\MessagePlex.STD10.csproj", "{5040397A-A05A-47B1-A964-9C9D88AF29DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePlexTests", "MessagePlexTests\MessagePlexTests.csproj", "{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		MessagePlex\MessagePlex.projitems*{fd8f028d-627b-47e4-a817-5566d674a4b8}*SharedItemsImports = 4
+		MessagePlex\MessagePlex.projitems*{1c6b3e22-cac5-4326-b40d-d6a7f8ec8220}*SharedItemsImports = 13
+		MessagePlex\MessagePlex.projitems*{8988d789-95bc-480b-9ff0-3f16db469ef5}*SharedItemsImports = 4
+		MessagePlex\MessagePlex.projitems*{512e6d1e-06ac-4024-8ec4-0b0ce5d4bf29}*SharedItemsImports = 4
+		MessagePlex\MessagePlex.projitems*{5040397a-a05a-47b1-a964-9c9d88af29da}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8988D789-95BC-480B-9FF0-3F16DB469EF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8988D789-95BC-480B-9FF0-3F16DB469EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8988D789-95BC-480B-9FF0-3F16DB469EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8988D789-95BC-480B-9FF0-3F16DB469EF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{512E6D1E-06AC-4024-8EC4-0B0CE5D4BF29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{512E6D1E-06AC-4024-8EC4-0B0CE5D4BF29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{512E6D1E-06AC-4024-8EC4-0B0CE5D4BF29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{512E6D1E-06AC-4024-8EC4-0B0CE5D4BF29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD8F028D-627B-47E4-A817-5566D674A4B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD8F028D-627B-47E4-A817-5566D674A4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD8F028D-627B-47E4-A817-5566D674A4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD8F028D-627B-47E4-A817-5566D674A4B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5040397A-A05A-47B1-A964-9C9D88AF29DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5040397A-A05A-47B1-A964-9C9D88AF29DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5040397A-A05A-47B1-A964-9C9D88AF29DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5040397A-A05A-47B1-A964-9C9D88AF29DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

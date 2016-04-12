@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>1c6b3e22-cac5-4326-b40d-d6a7f8ec8220</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>MessagePlex</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DoppleGanger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ITaskPlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MessagePlicatorEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ReadSafeMsgPlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConcurrentMessagePlicator`1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConcurrentMessagePlicator`2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TaskPlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IPlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IMessagePlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SimpleMessagePlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MessagePlicatorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SimplePlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PlexStream.cs" />
+  </ItemGroup>
+</Project>

@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
-public abstract class MessagePlicatorBase<TMsg, TLink> : IMessagePlicator<TMsg>
+public abstract class MessagePlicatorBase<TMsg, TLink> : MessagePlex.DisposableBase, IMessagePlicator<TMsg>
     where TLink : class, IPlexBeaconPin<TMsg>
 {
     protected internal volatile TLink HeldLink;
@@ -31,6 +32,12 @@ public abstract class MessagePlicatorBase<TMsg, TLink> : IMessagePlicator<TMsg>
         var held = HeldLink;
         HeldLink = null;
         LinkThem(held, null);
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+            Break();
     }
 
     public virtual IEnumerator<TMsg> GetEnumerator()

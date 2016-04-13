@@ -12,7 +12,7 @@ public abstract class MessagePlicatorBase<TMsg, TLink> : MessagePlex.DisposableB
     }
 
     protected abstract TLink PickAPin(TMsg msg);
-    protected abstract void LinkThem(TLink held, TLink next);
+    protected abstract bool LinkThem(TLink held, TLink next);
 
     protected virtual bool Enlink(TMsg msg, bool nonBreaking)
     {
@@ -27,11 +27,11 @@ public abstract class MessagePlicatorBase<TMsg, TLink> : MessagePlex.DisposableB
         return true;
     }
     public abstract bool Enlink(TMsg msg);
-    public virtual void Break()
+    public virtual bool Break()
     {
         var held = HeldLink;
         HeldLink = null;
-        LinkThem(held, null);
+        return LinkThem(held, null);
     }
 
     protected override void Dispose(bool disposing)

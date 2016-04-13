@@ -21,12 +21,13 @@ public sealed class SimplePlexBeaconPin<T> : IPlexBeaconPin<T>
         }
     }
 
-    internal void LinkWith(IPlexBeaconPin<T> next)
+    internal bool LinkWith(IPlexBeaconPin<T> next)
     {
         if(HasNext)
-            throw new InvalidOperationException();
+            return false;
 
         _Next = next;
         HasNext = true;
+        return true;
     }
 }

@@ -4,22 +4,16 @@ using System.Threading.Tasks;
 
 public abstract class SimpleSourcePlicator<T> : MessagePlicatorBase<T, SourcePlexBeaconPin<T>>
 {
-    sealed public override void Break()
-    {
-        throw new NotSupportedException();
-    }
+    sealed public override bool Break() => false;
     sealed protected override void Dispose(bool disposing)
     {
         if (disposing)
             base.Break();
     }
-    sealed public override bool Enlink(T msg)
-    {
-        throw new NotSupportedException();
-    }
+    sealed public override bool Enlink(T msg) => false;
 
-    sealed protected override void LinkThem(SourcePlexBeaconPin<T> held, SourcePlexBeaconPin<T> next)
-        => held?.LinkWith(next);
+    sealed protected override bool LinkThem(SourcePlexBeaconPin<T> held, SourcePlexBeaconPin<T> next)
+        => (held?.LinkWith(next)).GetValueOrDefault(true);
 
     protected abstract bool TryReadMessage(out T result);
     void Read()

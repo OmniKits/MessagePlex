@@ -11,6 +11,6 @@
     sealed protected override SimplePlexBeaconPin<TMsg> PickAPin(TMsg msg)
         => new SimplePlexBeaconPin<TMsg>(msg);
 
-    sealed protected override void LinkThem(SimplePlexBeaconPin<TMsg> held, SimplePlexBeaconPin<TMsg> next)
-        => held?.LinkWith(next);
+    sealed protected override bool LinkThem(SimplePlexBeaconPin<TMsg> held, SimplePlexBeaconPin<TMsg> next)
+        => (held?.LinkWith(next)).GetValueOrDefault(true);
 }

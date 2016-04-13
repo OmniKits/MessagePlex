@@ -50,10 +50,5 @@ public sealed class TaskSourcePlexBeaconPin<T> : ITaskPlexBeaconPin<T>
     public bool HasNext => _TCS.Task.IsCompleted;
 
     internal bool LinkWith(ITaskPlexBeaconPin<T> next)
-    {
-        if (next == null) // breaking should not raise error at all
-            return _TCS.TrySetResult(next);
-        _TCS.SetResult(next);
-        return true;
-    }
+        => _TCS.TrySetResult(next);
 }

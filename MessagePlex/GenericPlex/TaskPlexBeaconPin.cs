@@ -19,6 +19,6 @@ public sealed class TaskPlexBeaconPin<T> : ITaskPlexBeaconPin<T>
     public ITaskPlexBeaconPin<T> Next => ForNext.Result;
     IPlexBeaconPin<T> IPlexBeaconPin<T>.Next => Next;
 
-    internal void LinkWith(ITaskPlexBeaconPin<T> next)
-        => _TCS.SetResult(next);
+    internal bool LinkWith(ITaskPlexBeaconPin<T> next)
+        => _TCS.TrySetResult(next);
 }

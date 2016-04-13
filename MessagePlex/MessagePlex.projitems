@@ -19,7 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ConcurrentMessagePlicator`2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReadSafeEnumeratorPlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReadSafeSourcePlicator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TaskSourcePlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TaskPlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IMessagePlicator.cs" />

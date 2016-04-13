@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 
 using Setup = System.Func<System.Threading.Tasks.Task>;
 
-public sealed class SourcePlexBeaconPin<T> : ITaskPlexBeaconPin<T>
+public sealed class TaskSourcePlexBeaconPin<T> : ITaskPlexBeaconPin<T>
 {
     private TaskCompletionSource<ITaskPlexBeaconPin<T>> _TCS = new TaskCompletionSource<ITaskPlexBeaconPin<T>>();
     private Setup _Setup;
 
     public T Message { get; }
 
-    internal SourcePlexBeaconPin(T msg, Setup setup)
+    internal TaskSourcePlexBeaconPin(T msg, Setup setup)
     {
         Message = msg;
         _Setup = setup;

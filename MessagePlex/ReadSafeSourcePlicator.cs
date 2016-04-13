@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-public abstract class ReadSafeSourcePlicator<T> : MessagePlicatorBase<T, SourcePlexBeaconPin<T>>
+public abstract class ReadSafeSourcePlicator<T> : MessagePlicatorBase<T, TaskSourcePlexBeaconPin<T>>
 {
     sealed public override void Break()
     {
@@ -18,7 +18,7 @@ public abstract class ReadSafeSourcePlicator<T> : MessagePlicatorBase<T, SourceP
         throw new NotSupportedException();
     }
 
-    sealed protected override void LinkThem(SourcePlexBeaconPin<T> held, SourcePlexBeaconPin<T> next)
+    sealed protected override void LinkThem(TaskSourcePlexBeaconPin<T> held, TaskSourcePlexBeaconPin<T> next)
         => held?.LinkWith(next);
 
     protected abstract bool TryReadMessage(out T result);
@@ -32,6 +32,6 @@ public abstract class ReadSafeSourcePlicator<T> : MessagePlicatorBase<T, SourceP
             base.Break();
     });
 
-    sealed protected override SourcePlexBeaconPin<T> PickAPin(T msg)
-        => new SourcePlexBeaconPin<T>(msg, Read);
+    sealed protected override TaskSourcePlexBeaconPin<T> PickAPin(T msg)
+        => new TaskSourcePlexBeaconPin<T>(msg, Read);
 }

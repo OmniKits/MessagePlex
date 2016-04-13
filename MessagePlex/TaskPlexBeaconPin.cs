@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-public class TaskPlexBeaconPin<T> : ITaskPlexBeaconPin<T>
+public sealed class TaskPlexBeaconPin<T> : ITaskPlexBeaconPin<T>
 {
     private TaskCompletionSource<ITaskPlexBeaconPin<T>> _TCS;
 
     public Task<ITaskPlexBeaconPin<T>> ForNext => _TCS.Task;
 
     public T Message { get; }
-    internal TaskPlexBeaconPin(T payload)
+    internal TaskPlexBeaconPin(T msg)
     {
         _TCS = new TaskCompletionSource<ITaskPlexBeaconPin<T>>();
 
-        Message = payload;
+        Message = msg;
     }
 
     public bool HasNext => ForNext.IsCompleted;

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 
-public interface ITaskPlexBeaconPin<TPayload> : IPlexBeaconPin<TPayload>
+public interface ITaskPlexBeaconPin<T> : IPlexBeaconPin<T>
 {
-    new ITaskPlexBeaconPin<TPayload> Next { get; }
-    Task<ITaskPlexBeaconPin<TPayload>> ForNext { get; }
+    new ITaskPlexBeaconPin<T> Next { get; }
+    Task<ITaskPlexBeaconPin<T>> ForNext { get; }
 }

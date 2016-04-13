@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-public class PlexStream : Stream
+public sealed class PlexStream : Stream
 #if NETFX
     , ICloneable
 #endif

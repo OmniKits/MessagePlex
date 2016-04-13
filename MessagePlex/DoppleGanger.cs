@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-class DoppleGanger<T> : IEnumerator<T>
+sealed class DoppleGanger<T> : IEnumerator<T>
 {
     IPlexBeaconPin<T> _Held;
 

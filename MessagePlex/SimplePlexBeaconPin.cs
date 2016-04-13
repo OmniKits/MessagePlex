@@ -1,12 +1,12 @@
 ﻿using System;
 
-public class SimplePlexBeaconPin<T> : IPlexBeaconPin<T>
+public sealed class SimplePlexBeaconPin<T> : IPlexBeaconPin<T>
 {
     public T Message { get; }
 
-    internal SimplePlexBeaconPin(T payload)
+    internal SimplePlexBeaconPin(T msg)
     {
-        Message = payload;
+        Message = msg;
     }
 
     public bool HasNext { get; private set; }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public abstract class MessagePlicatorBase<TMsg, TLink> : MessagePlex.DisposableBase, IMessagePlicator<TMsg>
     where TLink : class, IPlexBeaconPin<TMsg>
 {
-    protected internal volatile TLink HeldLink;
+    internal volatile TLink HeldLink;
     protected MessagePlicatorBase()
     {
         HeldLink = PickAPin(default(TMsg));
@@ -26,7 +26,7 @@ public abstract class MessagePlicatorBase<TMsg, TLink> : MessagePlex.DisposableB
 
         return true;
     }
-    public abstract bool Enlink(TMsg value);
+    public abstract bool Enlink(TMsg msg);
     public virtual void Break()
     {
         var held = HeldLink;

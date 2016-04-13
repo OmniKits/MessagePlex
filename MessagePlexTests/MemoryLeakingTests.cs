@@ -6,6 +6,11 @@ using Xunit;
 
 public class MemoryLeakingTests
 {
+    public MemoryLeakingTests()
+    {
+        Thread.Sleep(TimeSpan.FromSeconds(5));
+    }
+
     [Flags]
     enum TestMode
     {
@@ -36,8 +41,6 @@ public class MemoryLeakingTests
 
     public void ForModes<T>(Func<IMessagePlicator<T>> factory, Func<T, int, bool> test)
     {
-        Thread.Sleep(5000);
-
         try
         {
             TestPlicator(factory());
@@ -62,5 +65,11 @@ public class MemoryLeakingTests
     public void ForReadSafeEnumeratorPlicator()
     {
         ForModes(() => new ReadSafeEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == 0x10000 + i);
+    }
+
+    [Fact]
+    public void ForSimpleEnumeratorPlicator()
+    {
+        ForModes(() => new SimpleEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == 0x10000 + i);
     }
 }

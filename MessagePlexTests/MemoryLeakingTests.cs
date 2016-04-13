@@ -4,12 +4,13 @@ using System.Linq;
 using System.Threading;
 using Xunit;
 
+[Collection(nameof(MemoryLeakingTests))]
 public class MemoryLeakingTests
 {
-    public MemoryLeakingTests()
-    {
-        Thread.Sleep(TimeSpan.FromSeconds(5));
-    }
+    [CollectionDefinition(nameof(MemoryLeakingTests))]
+    [Orderer(Order = 1)]
+    public class Fixure : ICollectionFixture<MemoryLeakingTests>
+    { }
 
     [Flags]
     enum TestMode

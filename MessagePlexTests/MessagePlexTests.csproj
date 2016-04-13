@@ -65,15 +65,15 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Orderer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MemoryLeakingTests.cs" />
     <Compile Include="PlexTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MessagePlex.NET45\MessagePlex.NET45.csproj">
       <Project>{512e6d1e-06ac-4024-8ec4-0b0ce5d4bf29}</Project>

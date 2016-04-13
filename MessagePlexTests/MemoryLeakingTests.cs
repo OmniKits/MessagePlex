@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Xunit;
 
 public class MemoryLeakingTests
@@ -35,6 +36,8 @@ public class MemoryLeakingTests
 
     public void ForModes<T>(Func<IMessagePlicator<T>> factory, Func<T, int, bool> test)
     {
+        Thread.Sleep(5000);
+
         try
         {
             TestPlicator(factory());

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,9 +27,6 @@ public sealed class SourcePlexBeaconPin<T> : ITaskPlexBeaconPin<T>
             Interlocked.Exchange(ref _Setup, null)?.Invoke()
             .ContinueWith(task =>
             {
-                if (!task.IsCompleted)
-                    Debugger.Break();
-
                 switch (task.Status)
                 {
                     case TaskStatus.RanToCompletion:
@@ -53,7 +49,11 @@ public sealed class SourcePlexBeaconPin<T> : ITaskPlexBeaconPin<T>
 
     public bool HasNext => _TCS.Task.IsCompleted;
 
-    // TODO: find out why fail here
-    internal void LinkWith(ITaskPlexBeaconPin<T> next)
-        => _TCS.TrySetResult(next);
+    internal bool LinkWith(ITaskPlexBeaconPin<T> next)
+    {
+        if (next == null) // possible disposing
+            return _TCS.TrySetResult(next);
+        _TCS.SetResult(next);
+        return true;
+    }
 }

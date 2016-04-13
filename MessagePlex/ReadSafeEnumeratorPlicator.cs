@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-public abstract class ReadSafeEnumeratorPlicator<T> : ReadSafeSourcePlicator<T>
+public class ReadSafeEnumeratorPlicator<T> : ReadSafeSourcePlicator<T>
 {
-    protected abstract IEnumerator<T> Source { get; }
+    protected virtual IEnumerator<T> Source { get; }
 
-    protected sealed override void FeedMe()
+    public ReadSafeEnumeratorPlicator(IEnumerator<T> source)
     {
-        if (Source.MoveNext())
-            Enlink(Source.Current, true);
-        else
-            Break();
+        Source = source;
+    }
+
+    protected sealed override bool TryReadMessage(out T result)
+    {
+        var success = Source.MoveNext();
+        result = success ? Source.Current : default(T);
+        return success;
     }
 }

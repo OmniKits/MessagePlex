@@ -38,5 +38,6 @@ sealed class DoppleGanger<T> : IEnumerator<T>
     {
         throw new NotImplementedException();
     }
-    public void Dispose() { }
+    public void Dispose()
+        => _Held = null;
 }

@@ -12,6 +12,13 @@ public class MemoryLeakingTests
     public class Fixture : ICollectionFixture<MemoryLeakingTests>
     { }
 
+    private static readonly int BASE;
+
+    static MemoryLeakingTests()
+    {
+        BASE = Environment.Is64BitProcess ? 0x40000 : 0x10000;
+    }
+
     [Flags]
     enum TestMode
     {
@@ -31,12 +38,15 @@ public class MemoryLeakingTests
             int i = 0;
             foreach (var data in plicator)
             {
-                if (mode.Has(TestMode.CoMoveNext))
-                    ator.MoveNext();
-
                 if (test != null)
                     Assert.True(test(data, i++));
+
+                if (mode.Has(TestMode.CoMoveNext))
+                    ator.MoveNext();
             }
+
+            if (ator.MoveNext() && test != null)
+                Assert.True(test(ator.Current, 0));
         }
     }
 
@@ -60,15 +70,16 @@ public class MemoryLeakingTests
 
     private IEnumerator<byte[]> GenEnumerator()
     {
-        for (var i = 0; i < 0x10000; i++)
-            yield return new byte[0x10000 + i];
+        int i;
+        for (i = 0; i < BASE; i++)
+            yield return new byte[BASE + i];
     }
 
     [Fact]
-    public void ForReadSafeEnumeratorPlicator()
-        => ForModes(() => new TaskEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == 0x10000 + i);
+    public void ForTaskEnumeratorPlicator()
+        => ForModes(() => new TaskEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == BASE + i);
 
-    [Fact]
+    [Fact, Orderer(Order = -1)]
     public void ForSimpleEnumeratorPlicator()
-        => ForModes(() => new SimpleEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == 0x10000 + i);
+        => ForModes(() => new SimpleEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == BASE + i);
 }

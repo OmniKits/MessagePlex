@@ -6,7 +6,11 @@ using Setup = System.Action;
 
 public sealed class EventSourcePlexBeaconPin<T> : IPlexBeaconPin<T>
 {
-    private volatile ManualResetEvent _MRE = new ManualResetEvent(false);
+    // usually volatile is necessary for double-checked locking
+    // but it's no longer the case since the only change -
+    // - "other" threads can see is setting it to null
+    // further tuning might be useful
+    private ManualResetEvent _MRE = new ManualResetEvent(false);
     private Setup _Setup;
 
     public T Message { get; }

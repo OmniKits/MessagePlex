@@ -1,18 +1,21 @@
 ﻿using System.Collections.Generic;
 
-public class PulseEnumeratorPlicator<T> : PulseSourcePlicator<T>
+namespace MessagePlex
 {
-    protected virtual IEnumerator<T> Source { get; }
-
-    public PulseEnumeratorPlicator(IEnumerator<T> source)
+    public class PulseEnumeratorPlicator<T> : PulseSourcePlicator<T>
     {
-        Source = source;
-    }
+        protected virtual IEnumerator<T> Source { get; }
 
-    protected sealed override bool TryReadMessage(out T result)
-    {
-        var success = Source.MoveNext();
-        result = success ? Source.Current : default(T);
-        return success;
+        public PulseEnumeratorPlicator(IEnumerator<T> source)
+        {
+            Source = source;
+        }
+
+        protected sealed override bool TryReadMessage(out T result)
+        {
+            var success = Source.MoveNext();
+            result = success ? Source.Current : default(T);
+            return success;
+        }
     }
 }

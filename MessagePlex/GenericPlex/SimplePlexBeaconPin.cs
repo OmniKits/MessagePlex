@@ -1,33 +1,36 @@
 ﻿using System;
 
-public sealed class SimplePlexBeaconPin<T> : IPlexBeaconPin<T>
+namespace MessagePlex
 {
-    public T Message { get; }
-
-    internal SimplePlexBeaconPin(T msg)
+    public sealed class SimplePlexBeaconPin<T> : IPlexBeaconPin<T>
     {
-        Message = msg;
-    }
+        public T Message { get; }
 
-    public bool HasNext { get; private set; }
-    private IPlexBeaconPin<T> _Next;
-    public IPlexBeaconPin<T> Next
-    {
-        get
+        internal SimplePlexBeaconPin(T msg)
         {
-            if (!HasNext)
-                throw new InvalidOperationException();
-            return _Next;
+            Message = msg;
         }
-    }
 
-    internal bool LinkWith(IPlexBeaconPin<T> next)
-    {
-        if(HasNext)
-            return false;
+        public bool HasNext { get; private set; }
+        private IPlexBeaconPin<T> _Next;
+        public IPlexBeaconPin<T> Next
+        {
+            get
+            {
+                if (!HasNext)
+                    throw new InvalidOperationException();
+                return _Next;
+            }
+        }
 
-        _Next = next;
-        HasNext = true;
-        return true;
+        internal bool LinkWith(IPlexBeaconPin<T> next)
+        {
+            if (HasNext)
+                return false;
+
+            _Next = next;
+            HasNext = true;
+            return true;
+        }
     }
 }

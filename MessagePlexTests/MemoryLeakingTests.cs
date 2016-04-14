@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading;
 using Xunit;
 
+using MessagePlex;
+
 [Collection(nameof(MemoryLeakingTests))]
 public class MemoryLeakingTests
 {

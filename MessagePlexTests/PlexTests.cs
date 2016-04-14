@@ -3,6 +3,8 @@ using System.Linq;
 using System.Threading;
 using Xunit;
 
+using MessagePlex;
+
 public class PlexTests
 {
     class MyChain : ConcurrentMessagePlicator<byte[]>

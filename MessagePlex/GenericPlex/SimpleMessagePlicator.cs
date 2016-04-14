@@ -1,16 +1,19 @@
-﻿public abstract class SimpleMessagePlicator<TMsg> : MessagePlicatorBase<TMsg, SimplePlexBeaconPin<TMsg>>
+﻿namespace MessagePlex
 {
-    sealed protected override bool Enlink(TMsg msg, bool nonBreaking)
+    public abstract class SimpleMessagePlicator<TMsg> : MessagePlicatorBase<TMsg, SimplePlexBeaconPin<TMsg>>
     {
-        if (IsDisposeTriggered)
-            return false;
+        sealed protected override bool Enlink(TMsg msg, bool nonBreaking)
+        {
+            if (IsDisposeTriggered)
+                return false;
 
-        return base.Enlink(msg, nonBreaking);
+            return base.Enlink(msg, nonBreaking);
+        }
+
+        sealed protected override SimplePlexBeaconPin<TMsg> PickAPin(TMsg msg)
+            => new SimplePlexBeaconPin<TMsg>(msg);
+
+        sealed protected override bool LinkThem(SimplePlexBeaconPin<TMsg> held, SimplePlexBeaconPin<TMsg> next)
+            => (held?.LinkWith(next)).GetValueOrDefault(true);
     }
-
-    sealed protected override SimplePlexBeaconPin<TMsg> PickAPin(TMsg msg)
-        => new SimplePlexBeaconPin<TMsg>(msg);
-
-    sealed protected override bool LinkThem(SimplePlexBeaconPin<TMsg> held, SimplePlexBeaconPin<TMsg> next)
-        => (held?.LinkWith(next)).GetValueOrDefault(true);
 }

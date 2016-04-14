@@ -3,55 +3,58 @@ using System.Threading;
 
 using Setup = System.Action;
 
-public sealed class PulseSourcePlexBeaconPin<T> : IPlexBeaconPin<T>
+namespace MessagePlex
 {
-    // usually volatile is necessary for double-checked locking
-    // but it's no longer the case since the only change -
-    // - "other" threads can see is setting it to null
-    // further tuning can be helpful
-    private ManualResetEvent _MRE = new ManualResetEvent(false);
-    private Setup _Setup;
-
-    public T Message { get; }
-
-    internal PulseSourcePlexBeaconPin(T msg, Setup setup)
+    public sealed class PulseSourcePlexBeaconPin<T> : IPlexBeaconPin<T>
     {
-        Message = msg;
-        _Setup = setup;
-    }
+        // usually volatile is necessary for double-checked locking
+        // but it's no longer the case since the only change -
+        // - "other" threads can see is setting it to null
+        // further tuning can be helpful
+        private ManualResetEvent _MRE = new ManualResetEvent(false);
+        private Setup _Setup;
 
-    public bool HasNext => _MRE == null;
+        public T Message { get; }
 
-    private IPlexBeaconPin<T> _Next;
-    public IPlexBeaconPin<T> Next
-    {
-        get
+        internal PulseSourcePlexBeaconPin(T msg, Setup setup)
         {
-            if (_Setup != null)
-                Interlocked.Exchange(ref _Setup, null)?.Invoke();
-
-            _MRE?.WaitOne();
-
-            return _Next;
+            Message = msg;
+            _Setup = setup;
         }
-    }
 
-    internal bool LinkWith(IPlexBeaconPin<T> next)
-    {
-        if (HasNext)
-            return false;
+        public bool HasNext => _MRE == null;
 
-        lock (this)
+        private IPlexBeaconPin<T> _Next;
+        public IPlexBeaconPin<T> Next
         {
-            var mre = _MRE;
-            if (mre == null)
+            get
+            {
+                if (_Setup != null)
+                    Interlocked.Exchange(ref _Setup, null)?.Invoke();
+
+                _MRE?.WaitOne();
+
+                return _Next;
+            }
+        }
+
+        internal bool LinkWith(IPlexBeaconPin<T> next)
+        {
+            if (HasNext)
                 return false;
 
-            _Next = next;
-            mre.Set();
-            _MRE = null;
-        }
+            lock (this)
+            {
+                var mre = _MRE;
+                if (mre == null)
+                    return false;
 
-        return true;
+                _Next = next;
+                mre.Set();
+                _MRE = null;
+            }
+
+            return true;
+        }
     }
 }

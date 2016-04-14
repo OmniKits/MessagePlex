@@ -66,7 +66,7 @@ public class MemoryLeakingTests
 
     [Fact]
     public void ForReadSafeEnumeratorPlicator()
-        => ForModes(() => new ReadSafeEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == 0x10000 + i);
+        => ForModes(() => new TaskEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == 0x10000 + i);
 
     [Fact]
     public void ForSimpleEnumeratorPlicator()

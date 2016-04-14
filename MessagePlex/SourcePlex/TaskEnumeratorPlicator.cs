@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-public class ReadSafeEnumeratorPlicator<T> : ReadSafeSourcePlicator<T>
+public class TaskEnumeratorPlicator<T> : TaskSourcePlicator<T>
 {
     protected virtual IEnumerator<T> Source { get; }
 
-    public ReadSafeEnumeratorPlicator(IEnumerator<T> source)
+    public TaskEnumeratorPlicator(IEnumerator<T> source)
     {
         Source = source;
     }

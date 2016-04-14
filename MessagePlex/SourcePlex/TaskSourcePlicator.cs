@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-public abstract class ReadSafeSourcePlicator<T> : MessagePlicatorBase<T, TaskSourcePlexBeaconPin<T>>
+public abstract class TaskSourcePlicator<T> : MessagePlicatorBase<T, TaskSourcePlexBeaconPin<T>>
 {
     sealed public override bool Break() => false;
     sealed protected override void Dispose(bool disposing)

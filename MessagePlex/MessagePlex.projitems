@@ -21,8 +21,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\SimpleMessagePlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\SimplePlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\TaskPlexBeaconPin.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\ReadSafeEnumeratorPlicator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\ReadSafeSourcePlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\TaskEnumeratorPlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\TaskSourcePlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\SimpleEnumeratorPlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\SimpleSourcePlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\EventSourcePlexBeaconPin.cs" />

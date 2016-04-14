@@ -2,7 +2,7 @@
 
 namespace MessagePlex
 {
-    public sealed class SimplePlexBeaconPin<T> : IPlexBeaconPin<T>
+    public class SimplePlexBeaconPin<T> : IPlexBeaconPin<T>
     {
         public T Message { get; }
 
@@ -13,7 +13,7 @@ namespace MessagePlex
 
         public bool HasNext { get; private set; }
         private IPlexBeaconPin<T> _Next;
-        public IPlexBeaconPin<T> Next
+        public virtual IPlexBeaconPin<T> Next
         {
             get
             {

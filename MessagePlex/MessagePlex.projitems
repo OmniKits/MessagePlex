@@ -21,11 +21,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\SimpleMessagePlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\SimplePlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\TaskPlexBeaconPin.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\PulseEnumeratorPlicator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\PulseSourcePlicator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\PulseSourcePlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\BasicEnumeratorPlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\BasicSourcePlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IMessagePlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PlexStream.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\BasicSourcePlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\PulseEnumeratorPlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\PulseSourcePlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\PulseSourcePlicator.cs" />
   </ItemGroup>
 </Project>

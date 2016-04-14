@@ -12,6 +12,12 @@ public class MemoryLeakingTests
     public class Fixture : ICollectionFixture<MemoryLeakingTests>
     { }
 
+    private static readonly int BASE;
+
+    static MemoryLeakingTests()
+    {
+        BASE = Environment.Is64BitProcess ? 0x40000 : 0x10000;
+    }
     [Flags]
     enum TestMode
     {
@@ -31,12 +37,15 @@ public class MemoryLeakingTests
             int i = 0;
             foreach (var data in plicator)
             {
-                if (mode.Has(TestMode.CoMoveNext))
-                    ator.MoveNext();
-
                 if (test != null)
                     Assert.True(test(data, i++));
+
+                if (mode.Has(TestMode.CoMoveNext))
+                    ator.MoveNext();
             }
+
+            if (ator.MoveNext() && test != null)
+                Assert.True(test(ator.Current, 0));
         }
     }
 
@@ -47,9 +56,11 @@ public class MemoryLeakingTests
             TestPlicator(factory());
             throw new Exception();
         }
-        catch (AggregateException ex)
+        catch (Exception ex)
         {
-            Assert.IsType<OutOfMemoryException>(ex.InnerException);
+            if (ex is AggregateException)
+                ex = ex.InnerException;
+            Assert.IsType<OutOfMemoryException>(ex);
         }
 
         TestPlicator(factory(), test, TestMode.CoMoveNext);
@@ -58,15 +69,15 @@ public class MemoryLeakingTests
 
     private IEnumerator<byte[]> GenEnumerator()
     {
-        for (var i = 0; i < 0x10000; i++)
-            yield return new byte[0x10000 + i];
+        for (var i = 0; i < BASE; i++)
+            yield return new byte[BASE + i];
     }
 
     [Fact]
     public void ForReadSafeEnumeratorPlicator()
-        => ForModes(() => new ReadSafeEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == 0x10000 + i);
+        => ForModes(() => new ReadSafeEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == BASE + i);
 
     [Fact]
     public void ForSimpleEnumeratorPlicator()
-        => ForModes(() => new SimpleEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == 0x10000 + i);
+        => ForModes(() => new SimpleEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == BASE + i);
 }

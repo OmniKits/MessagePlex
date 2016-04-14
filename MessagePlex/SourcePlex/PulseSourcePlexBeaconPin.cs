@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Threading;
-using System.Threading.Tasks;
 
 using Setup = System.Action;
 
-public sealed class EventSourcePlexBeaconPin<T> : IPlexBeaconPin<T>
+public sealed class PulseSourcePlexBeaconPin<T> : IPlexBeaconPin<T>
 {
     // usually volatile is necessary for double-checked locking
     // but it's no longer the case since the only change -
@@ -15,7 +14,7 @@ public sealed class EventSourcePlexBeaconPin<T> : IPlexBeaconPin<T>
 
     public T Message { get; }
 
-    internal EventSourcePlexBeaconPin(T msg, Setup setup)
+    internal PulseSourcePlexBeaconPin(T msg, Setup setup)
     {
         Message = msg;
         _Setup = setup;

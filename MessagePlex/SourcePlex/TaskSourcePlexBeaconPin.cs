@@ -4,20 +4,17 @@ using System.Threading.Tasks;
 
 using Setup = System.Func<System.Threading.Tasks.Task>;
 
-public sealed class TaskSourcePlexBeaconPin<T> : ITaskPlexBeaconPin<T>
+public sealed class TaskSourcePlexBeaconPin<T> : TaskPlexBeaconPin<T>
 {
-    private TaskCompletionSource<ITaskPlexBeaconPin<T>> _TCS = new TaskCompletionSource<ITaskPlexBeaconPin<T>>();
     private Setup _Setup;
 
-    public T Message { get; }
-
     internal TaskSourcePlexBeaconPin(T msg, Setup setup)
+        : base(msg)
     {
-        Message = msg;
         _Setup = setup;
     }
 
-    public Task<ITaskPlexBeaconPin<T>> ForNext
+    public override Task<ITaskPlexBeaconPin<T>> ForNext
     {
         get
         {
@@ -43,12 +40,4 @@ public sealed class TaskSourcePlexBeaconPin<T> : ITaskPlexBeaconPin<T>
             return _TCS.Task;
         }
     }
-
-    public ITaskPlexBeaconPin<T> Next => ForNext.Result;
-    IPlexBeaconPin<T> IPlexBeaconPin<T>.Next => Next;
-
-    public bool HasNext => _TCS.Task.IsCompleted;
-
-    internal bool LinkWith(ITaskPlexBeaconPin<T> next)
-        => _TCS.TrySetResult(next);
 }

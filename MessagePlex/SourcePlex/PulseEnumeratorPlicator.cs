@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-public class SimpleEnumeratorPlicator<T> : SimpleSourcePlicator<T>
+public class PulseEnumeratorPlicator<T> : PulseSourcePlicator<T>
 {
     protected virtual IEnumerator<T> Source { get; }
 
-    public SimpleEnumeratorPlicator(IEnumerator<T> source)
+    public PulseEnumeratorPlicator(IEnumerator<T> source)
     {
         Source = source;
     }

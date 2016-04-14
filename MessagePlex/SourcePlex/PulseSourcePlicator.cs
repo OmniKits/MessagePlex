@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-public abstract class SimpleSourcePlicator<T> : MessagePlicatorBase<T, EventSourcePlexBeaconPin<T>>
+﻿public abstract class PulseSourcePlicator<T> : MessagePlicatorBase<T, PulseSourcePlexBeaconPin<T>>
 {
     sealed public override bool Break() => false;
     sealed protected override void Dispose(bool disposing)
@@ -12,7 +8,7 @@ public abstract class SimpleSourcePlicator<T> : MessagePlicatorBase<T, EventSour
     }
     sealed public override bool Enlink(T msg) => false;
 
-    sealed protected override bool LinkThem(EventSourcePlexBeaconPin<T> held, EventSourcePlexBeaconPin<T> next)
+    sealed protected override bool LinkThem(PulseSourcePlexBeaconPin<T> held, PulseSourcePlexBeaconPin<T> next)
         => (held?.LinkWith(next)).GetValueOrDefault(true);
 
     protected abstract bool TryReadMessage(out T result);
@@ -25,6 +21,6 @@ public abstract class SimpleSourcePlicator<T> : MessagePlicatorBase<T, EventSour
             base.Break();
     }
 
-    sealed protected override EventSourcePlexBeaconPin<T> PickAPin(T msg)
-        => new EventSourcePlexBeaconPin<T>(msg, Read);
+    sealed protected override PulseSourcePlexBeaconPin<T> PickAPin(T msg)
+        => new PulseSourcePlexBeaconPin<T>(msg, Read);
 }

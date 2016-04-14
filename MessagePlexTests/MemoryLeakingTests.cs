@@ -9,7 +9,7 @@ public class MemoryLeakingTests
 {
     [CollectionDefinition(nameof(MemoryLeakingTests))]
     [Orderer(Order = 1)]
-    public class Fixure : ICollectionFixture<MemoryLeakingTests>
+    public class Fixture : ICollectionFixture<MemoryLeakingTests>
     { }
 
     [Flags]

@@ -26,7 +26,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\SimpleEnumeratorPlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\SimpleSourcePlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\EventSourcePlexBeaconPin.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\SourcePlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\TaskSourcePlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IMessagePlicator.cs" />

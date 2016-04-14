@@ -9,7 +9,7 @@ public sealed class EventSourcePlexBeaconPin<T> : IPlexBeaconPin<T>
     // usually volatile is necessary for double-checked locking
     // but it's no longer the case since the only change -
     // - "other" threads can see is setting it to null
-    // further tuning might be useful
+    // further tuning can be helpful
     private ManualResetEvent _MRE = new ManualResetEvent(false);
     private Setup _Setup;
 

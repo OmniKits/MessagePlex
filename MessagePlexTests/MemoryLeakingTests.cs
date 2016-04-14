@@ -47,9 +47,11 @@ public class MemoryLeakingTests
             TestPlicator(factory());
             throw new Exception();
         }
-        catch (AggregateException ex)
+        catch (Exception ex)
         {
-            Assert.IsType<OutOfMemoryException>(ex.InnerException);
+            if (ex is AggregateException)
+                ex = ex.InnerException;
+            Assert.IsType<OutOfMemoryException>(ex);
         }
 
         TestPlicator(factory(), test, TestMode.CoMoveNext);

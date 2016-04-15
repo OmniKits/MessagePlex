@@ -2,11 +2,11 @@
 
 namespace MessagePlex
 {
-    public class PulseEnumeratorPlicator<T> : PulseSourcePlicator<T>
+    public class SimpleEnumeratorPlicator<T> : SimpleSourcePlicator<T>
     {
         protected virtual IEnumerator<T> Source { get; }
 
-        public PulseEnumeratorPlicator(IEnumerator<T> source)
+        public SimpleEnumeratorPlicator(IEnumerator<T> source)
         {
             Source = source;
         }

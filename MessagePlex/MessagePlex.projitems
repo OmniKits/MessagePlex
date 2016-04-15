@@ -12,25 +12,25 @@
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DisposableBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DoppleGanger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\BasicMessagePlicator`1.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\BasicMessagePlicator`2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\SimpleMessagePlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\SimpleMessagePlicatorBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\MessagePlicatorBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\PulsePlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\BlockingPlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ITaskPlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MessagePlicatorEx.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\ConcurrentMessagePlicator`1.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\ConcurrentMessagePlicator`2.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\ReadSafeMsgPlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\ConcurrentMessagePlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\ConcurrentMessagePlicatorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\BlockingMsgPlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\BasicPlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\TaskPlexBeaconPin.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\BasicEnumeratorPlicator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\BasicSourcePlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\SimpleEnumeratorPlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\SimpleSourcePlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IMessagePlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PlexStream.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\BasicSourcePlicator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\PulseEnumeratorPlicator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\PulseSourcePlexBeaconPin.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\PulseSourcePlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\SimpleSourcePlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\BlockingEnumeratorPlicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\BlockingSourcePlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\BlockingSourcePlicator.cs" />
   </ItemGroup>
 </Project>

@@ -4,11 +4,11 @@ using Setup = System.Action;
 
 namespace MessagePlex
 {
-    public sealed class PulseSourcePlexBeaconPin<T> : PulsePlexBeaconPin<T>
+    public sealed class BlockingSourcePlexBeaconPin<T> : BlockingPlexBeaconPin<T>
     {
         private Setup _Setup;
 
-        internal PulseSourcePlexBeaconPin(T msg, Setup setup)
+        internal BlockingSourcePlexBeaconPin(T msg, Setup setup)
             : base(msg)
         {
             _Setup = setup;

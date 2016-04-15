@@ -79,11 +79,11 @@ public class MemoryLeakingTests
 
     [Fact]
     [Orderer(Order = -1)]
-    public void ForPulseEnumeratorPlicator()
-        => ForModes(() => new PulseEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == BASE + i);
+    public void ForBlockingEnumeratorPlicator()
+        => ForModes(() => new BlockingEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == BASE + i);
 
     [Fact]
     [Orderer(Order = -2)]
-    public void ForBasicEnumeratorPlicator()
-        => ForModes(() => new BasicEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == BASE + i);
+    public void ForSimpleEnumeratorPlicator()
+        => ForModes(() => new SimpleEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == BASE + i);
 }

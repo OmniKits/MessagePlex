@@ -1,6 +1,6 @@
 ﻿namespace MessagePlex
 {
-    public abstract class PulseSourcePlicator<T> : BasicMessagePlicator<T, PulseSourcePlexBeaconPin<T>>
+    public abstract class SimpleSourcePlicator<T> : SimpleMessagePlicatorBase<T, SimpleSourcePlexBeaconPin<T>>
     {
         sealed public override bool Break() => false;
         sealed protected override void Dispose(bool disposing)
@@ -10,7 +10,7 @@
         }
         sealed public override bool Enlink(T msg) => false;
 
-        sealed protected override bool LinkThem(PulseSourcePlexBeaconPin<T> held, PulseSourcePlexBeaconPin<T> next)
+        sealed protected override bool LinkThem(SimpleSourcePlexBeaconPin<T> held, SimpleSourcePlexBeaconPin<T> next)
             => (held?.LinkWith(next)).GetValueOrDefault(true);
 
         protected abstract bool TryReadMessage(out T result);
@@ -23,7 +23,7 @@
                 base.Break();
         }
 
-        sealed protected override PulseSourcePlexBeaconPin<T> PickAPin(T msg)
-            => new PulseSourcePlexBeaconPin<T>(msg, Read);
+        sealed protected override SimpleSourcePlexBeaconPin<T> PickAPin(T msg)
+            => new SimpleSourcePlexBeaconPin<T>(msg, Read);
     }
 }

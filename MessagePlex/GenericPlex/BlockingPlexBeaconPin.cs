@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Threading;
 
-using Setup = System.Action;
-
 namespace MessagePlex
 {
-    public class PulsePlexBeaconPin<T> : IPlexBeaconPin<T>
+    public class BlockingPlexBeaconPin<T> : IPlexBeaconPin<T>
     {
         // usually volatile is necessary for double-checked locking
         // but it's no longer the case since the only change -
@@ -15,7 +13,7 @@ namespace MessagePlex
 
         public T Message { get; }
 
-        internal PulsePlexBeaconPin(T msg)
+        internal BlockingPlexBeaconPin(T msg)
         {
             Message = msg;
         }

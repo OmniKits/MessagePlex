@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 
 namespace MessagePlex
 {
-    public abstract class ConcurrentMessagePlicator<TMsg, TLink> : MessagePlicatorBase<TMsg, TLink>
+    public abstract class ConcurrentMessagePlicatorBase<TMsg, TLink> : MessagePlicatorBase<TMsg, TLink>
         where TLink : class, IPlexBeaconPin<TMsg>
     {
         sealed protected override bool Enlink(TMsg msg, bool nonBreaking)

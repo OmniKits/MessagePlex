@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace MessagePlex
 {
-    public abstract class ConcurrentMessagePlicator<TMsg, TLink> : BasicMessagePlicator<TMsg, TLink>
+    public abstract class ConcurrentMessagePlicator<TMsg, TLink> : MessagePlicatorBase<TMsg, TLink>
         where TLink : class, IPlexBeaconPin<TMsg>
     {
         sealed protected override bool Enlink(TMsg msg, bool nonBreaking)
@@ -34,11 +34,5 @@ namespace MessagePlex
 
             return true;
         }
-
-        public override bool Break()
-            => LinkThem(Interlocked.Exchange(ref HeldLink, null), null);
-
-        sealed public override IEnumerator<TMsg> GetEnumerator()
-            => new DoppleGanger<TMsg>(HeldLink);
     }
 }

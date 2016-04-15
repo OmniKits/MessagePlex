@@ -1,15 +1,13 @@
-﻿namespace MessagePlex
+﻿using System;
+using System.Collections.Generic;
+
+namespace MessagePlex
 {
     public abstract class BasicMessagePlicator<TMsg> : BasicMessagePlicator<TMsg, BasicPlexBeaconPin<TMsg>>
     {
-        sealed protected override bool Enlink(TMsg msg, bool nonBreaking)
-        {
-            if (IsDisposeTriggered)
-                return false;
-
-            return base.Enlink(msg, nonBreaking);
-        }
-
+        sealed public override bool Break() => base.Break();
+        sealed protected override void Dispose(bool disposing)
+            => base.Dispose(disposing);
         sealed protected override BasicPlexBeaconPin<TMsg> PickAPin(TMsg msg)
             => new BasicPlexBeaconPin<TMsg>(msg);
 

@@ -4,20 +4,14 @@ using System.Collections.Generic;
 
 namespace MessagePlex
 {
-    public abstract class BasicMessagePlicator<TMsg, TLink> : DisposableBase, IMessagePlicator<TMsg>
+    public abstract class BasicMessagePlicator<TMsg, TLink> : MessagePlicatorBase<TMsg, TLink>
         where TLink : class, IPlexBeaconPin<TMsg>
     {
-        internal volatile TLink HeldLink;
-        protected BasicMessagePlicator()
+        sealed protected override bool Enlink(TMsg msg, bool nonBreaking)
         {
-            HeldLink = PickAPin(default(TMsg));
-        }
+            if (IsDisposeTriggered)
+                return false;
 
-        protected abstract TLink PickAPin(TMsg msg);
-        protected abstract bool LinkThem(TLink held, TLink next);
-
-        protected virtual bool Enlink(TMsg msg, bool nonBreaking)
-        {
             var held = HeldLink;
             if (!nonBreaking && held == null)
                 return false;
@@ -28,23 +22,5 @@ namespace MessagePlex
 
             return true;
         }
-        public abstract bool Enlink(TMsg msg);
-        public virtual bool Break()
-        {
-            var held = HeldLink;
-            HeldLink = null;
-            return LinkThem(held, null);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-                Break();
-        }
-
-        public virtual IEnumerator<TMsg> GetEnumerator()
-            => new DoppleGanger<TMsg>(HeldLink);
-        IEnumerator IEnumerable.GetEnumerator()
-            => GetEnumerator();
     }
 }

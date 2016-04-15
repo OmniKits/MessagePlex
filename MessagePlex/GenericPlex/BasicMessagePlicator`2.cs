@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace MessagePlex
 {
-    public abstract class MessagePlicatorBase<TMsg, TLink> : DisposableBase, IMessagePlicator<TMsg>
+    public abstract class BasicMessagePlicator<TMsg, TLink> : DisposableBase, IMessagePlicator<TMsg>
         where TLink : class, IPlexBeaconPin<TMsg>
     {
         internal volatile TLink HeldLink;
-        protected MessagePlicatorBase()
+        protected BasicMessagePlicator()
         {
             HeldLink = PickAPin(default(TMsg));
         }

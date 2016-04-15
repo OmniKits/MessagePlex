@@ -1,6 +1,6 @@
 ﻿namespace MessagePlex
 {
-    public abstract class ReadSafeMsgPlicator<TMsg> : MessagePlicatorBase<TMsg, TaskPlexBeaconPin<TMsg>>
+    public abstract class ReadSafeMsgPlicator<TMsg> : BasicMessagePlicator<TMsg, TaskPlexBeaconPin<TMsg>>
     {
         sealed protected override TaskPlexBeaconPin<TMsg> PickAPin(TMsg msg)
             => new TaskPlexBeaconPin<TMsg>(msg);

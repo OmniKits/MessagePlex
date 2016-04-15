@@ -16,10 +16,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)MessagePlicatorEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\ConcurrentMessagePlicator`1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\ConcurrentMessagePlicator`2.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\MessagePlicatorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\BasicMessagePlicator`2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\ReadSafeMsgPlicator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\SimpleMessagePlicator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\SimplePlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\BasicMessagePlicator`1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\BasicPlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\TaskPlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\BasicEnumeratorPlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SourcePlex\BasicSourcePlexBeaconPin.cs" />

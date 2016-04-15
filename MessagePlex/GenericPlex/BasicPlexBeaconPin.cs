@@ -2,11 +2,11 @@
 
 namespace MessagePlex
 {
-    public class SimplePlexBeaconPin<T> : IPlexBeaconPin<T>
+    public class BasicPlexBeaconPin<T> : IPlexBeaconPin<T>
     {
         public T Message { get; }
 
-        internal SimplePlexBeaconPin(T msg)
+        internal BasicPlexBeaconPin(T msg)
         {
             Message = msg;
         }

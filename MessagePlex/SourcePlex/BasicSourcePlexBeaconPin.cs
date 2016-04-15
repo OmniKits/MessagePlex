@@ -2,7 +2,7 @@
 
 namespace MessagePlex
 {
-    public sealed class BasicSourcePlexBeaconPin<T> : SimplePlexBeaconPin<T>
+    public sealed class BasicSourcePlexBeaconPin<T> : BasicPlexBeaconPin<T>
     {
         private Setup _Setup;
 

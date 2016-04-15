@@ -1,6 +1,6 @@
 ﻿namespace MessagePlex
 {
-    public abstract class BasicSourcePlicator<T> : MessagePlicatorBase<T, BasicSourcePlexBeaconPin<T>>
+    public abstract class BasicSourcePlicator<T> : BasicMessagePlicator<T, BasicSourcePlexBeaconPin<T>>
     {
         sealed public override bool Break() => false;
         sealed protected override void Dispose(bool disposing)

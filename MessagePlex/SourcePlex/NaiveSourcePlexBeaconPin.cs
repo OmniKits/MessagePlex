@@ -2,11 +2,11 @@
 
 namespace MessagePlex
 {
-    public sealed class SimpleSourcePlexBeaconPin<T> : SimplePlexBeaconPin<T>
+    public sealed class NaiveSourcePlexBeaconPin<T> : SimplePlexBeaconPin<T>
     {
         private Setup _Setup;
 
-        internal SimpleSourcePlexBeaconPin(T msg, Setup setup)
+        internal NaiveSourcePlexBeaconPin(T msg, Setup setup)
             : base(msg)
         {
             _Setup = setup;

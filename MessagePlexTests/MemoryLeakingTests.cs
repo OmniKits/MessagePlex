@@ -84,6 +84,6 @@ public class MemoryLeakingTests
 
     [Fact]
     [Orderer(Order = -2)]
-    public void ForSimpleEnumeratorPlicator()
-        => ForModes(() => new SimpleEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == BASE + i);
+    public void ForNaiveEnumeratorPlicator()
+        => ForModes(() => new NaiveEnumeratorPlicator<byte[]>(GenEnumerator()), (data, i) => data.Length == BASE + i);
 }

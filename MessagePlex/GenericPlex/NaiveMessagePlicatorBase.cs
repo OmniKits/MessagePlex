@@ -1,6 +1,6 @@
 ﻿namespace MessagePlex
 {
-    public abstract class SimpleMessagePlicatorBase<TMsg, TLink> : MessagePlicatorBase<TMsg, TLink>
+    public abstract class NaiveMessagePlicatorBase<TMsg, TLink> : MessagePlicatorBase<TMsg, TLink>
         where TLink : class, IPlexBeaconPin<TMsg>
     {
         sealed protected override bool Enlink(TMsg msg, bool nonBreaking)

@@ -1,6 +1,6 @@
 ﻿namespace MessagePlex
 {
-    public abstract class BlockingMsgPlicator<TMsg> : SimpleMessagePlicatorBase<TMsg, BlockingPlexBeaconPin<TMsg>>
+    public abstract class BlockingMsgPlicator<TMsg> : NaiveMessagePlicatorBase<TMsg, BlockingPlexBeaconPin<TMsg>>
     {
         sealed public override bool Break() => base.Break();
         sealed protected override void Dispose(bool disposing)

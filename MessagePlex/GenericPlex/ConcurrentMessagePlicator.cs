@@ -5,10 +5,10 @@
         sealed public override bool Break() => base.Break();
         sealed protected override void Dispose(bool disposing)
             => base.Dispose(disposing);
-        sealed protected override BlockingPlexBeaconPin<TMsg> PickAPin(TMsg msg)
+        sealed protected override BlockingPlexBeaconPin<TMsg> OnSpawnPin(TMsg msg)
             => new BlockingPlexBeaconPin<TMsg>(msg);
 
-        sealed protected override bool LinkThem(BlockingPlexBeaconPin<TMsg> held, BlockingPlexBeaconPin<TMsg> next)
+        sealed protected override bool OnLink(BlockingPlexBeaconPin<TMsg> held, BlockingPlexBeaconPin<TMsg> next)
             => (held?.LinkWith(next)).GetValueOrDefault(true);
     }
 }

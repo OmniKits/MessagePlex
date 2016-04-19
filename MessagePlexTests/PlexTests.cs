@@ -11,8 +11,8 @@ public class PlexTests
     {
         public bool IgnoreBreaking;
 
-        public override bool Enlink(byte[] value)
-            => Enlink(value, IgnoreBreaking);
+        public override bool OnNext(byte[] value)
+            => OnNext(value, IgnoreBreaking);
     }
 
     [Fact]
@@ -23,9 +23,9 @@ public class PlexTests
         var chain = new MyChain();
         var s0 = chain.ToPlexStream();
         var s1 = s0.Clone();
-        chain.Enlink(new byte[] { 233 });
+        chain.OnNext(new byte[] { 233 });
         var s2 = chain.ToPlexStream();
-        chain.Enlink(new byte[] { 234 });
+        chain.OnNext(new byte[] { 234 });
 
         using (s0)
         using (s1)
@@ -35,7 +35,7 @@ public class PlexTests
             {
                 Thread.Sleep(1000);
                 chain.Break();
-                chain.Enlink(new byte[] { 255 });
+                chain.OnNext(new byte[] { 255 });
             }).Start();
 
             Assert.Equal(233, s0.ReadByte());
@@ -72,15 +72,15 @@ public class PlexTests
         }
 
         chain.IgnoreBreaking = true;
-        chain.Enlink(null);
+        chain.OnNext(null);
 
         using (var s = chain.ToPlexStream())
         {
             new Thread(() =>
             {
                 Thread.Sleep(1000);
-                chain.Enlink(new byte[] { 233, 234 });
-                chain.Enlink(new byte[] { 253 });
+                chain.OnNext(new byte[] { 233, 234 });
+                chain.OnNext(new byte[] { 253 });
                 Thread.Sleep(1000);
                 chain.Break();
             }).Start();

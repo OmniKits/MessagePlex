@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public interface IMessagePlicator<T> : IEnumerable<T>, IDisposable
 {
-    bool Enlink(T value);
-    bool Break();
+    new IDoppelGanger<T> GetEnumerator();
+    bool OnNext(T value);
+    bool OnCompleted();
 }

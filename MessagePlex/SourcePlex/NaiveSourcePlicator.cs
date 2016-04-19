@@ -8,9 +8,9 @@
             if (disposing)
                 base.Break();
         }
-        sealed public override bool Enlink(T msg) => false;
+        sealed public override bool OnNext(T msg) => false;
 
-        sealed protected override bool LinkThem(NaiveSourcePlexBeaconPin<T> held, NaiveSourcePlexBeaconPin<T> next)
+        sealed protected override bool OnLink(NaiveSourcePlexBeaconPin<T> held, NaiveSourcePlexBeaconPin<T> next)
             => (held?.LinkWith(next)).GetValueOrDefault(true);
 
         protected abstract bool TryReadMessage(out T result);
@@ -18,12 +18,12 @@
         {
             T result;
             if (TryReadMessage(out result))
-                base.Enlink(result, true);
+                base.OnNext(result, true);
             else
                 base.Break();
         }
 
-        sealed protected override NaiveSourcePlexBeaconPin<T> PickAPin(T msg)
+        sealed protected override NaiveSourcePlexBeaconPin<T> OnSpawnPin(T msg)
             => new NaiveSourcePlexBeaconPin<T>(msg, Read);
     }
 }

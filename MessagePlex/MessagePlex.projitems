@@ -11,11 +11,12 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DisposableBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DoppleGanger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DoppelGanger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\NaiveMessagePlicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\NaiveMessagePlicatorBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\MessagePlicatorBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\BlockingPlexBeaconPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IDoppelGanger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ITaskPlexBeaconPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MessagePlicatorEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericPlex\ConcurrentMessagePlicator.cs" />

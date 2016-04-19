@@ -2,25 +2,25 @@
 
 namespace MessagePlex
 {
-    public abstract class ConcurrentMessagePlicatorBase<TMsg, TLink> : MessagePlicatorBase<TMsg, TLink>
-        where TLink : class, IPlexBeaconPin<TMsg>
+    public abstract class ConcurrentMessagePlicatorBase<TMsg, TPin> : MessagePlicatorBase<TMsg, TPin>
+        where TPin : class, IPlexBeaconPin<TMsg>
     {
-        sealed protected override bool Enlink(TMsg msg, bool nonBreaking)
+        sealed protected override bool OnNext(TMsg msg, bool nonBreaking)
         {
-            var next = PickAPin(msg);
-            TLink held;
+            var next = OnSpawnPin(msg);
+            TPin held;
 
             if (nonBreaking)
-                held = Interlocked.Exchange(ref HeldLink, next);
+                held = Interlocked.Exchange(ref HotPin, next);
             else
             {
-                held = HeldLink;
+                held = HotPin;
                 for (;;)
                 {
                     if (held == null)
                         return false;
 
-                    var tmp = Interlocked.CompareExchange(ref HeldLink, next, held);
+                    var tmp = Interlocked.CompareExchange(ref HotPin, next, held);
 
                     if (tmp == held)
                         break;
@@ -29,7 +29,7 @@ namespace MessagePlex
                 }
             }
 
-            LinkThem(held, next);
+            OnLink(held, next);
 
             return true;
         }

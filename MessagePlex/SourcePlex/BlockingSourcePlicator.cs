@@ -8,9 +8,9 @@
             if (disposing)
                 base.Break();
         }
-        sealed public override bool Enlink(T msg) => false;
+        sealed public override bool OnNext(T msg) => false;
 
-        sealed protected override bool LinkThem(BlockingSourcePlexBeaconPin<T> held, BlockingSourcePlexBeaconPin<T> next)
+        sealed protected override bool OnLink(BlockingSourcePlexBeaconPin<T> held, BlockingSourcePlexBeaconPin<T> next)
             => (held?.LinkWith(next)).GetValueOrDefault(true);
 
         protected abstract bool TryReadMessage(out T result);
@@ -18,12 +18,12 @@
         {
             T result;
             if (TryReadMessage(out result))
-                base.Enlink(result, true);
+                base.OnNext(result, true);
             else
                 base.Break();
         }
 
-        sealed protected override BlockingSourcePlexBeaconPin<T> PickAPin(T msg)
+        sealed protected override BlockingSourcePlexBeaconPin<T> OnSpawnPin(T msg)
             => new BlockingSourcePlexBeaconPin<T>(msg, Read);
     }
 }

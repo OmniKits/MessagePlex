@@ -2,11 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-sealed class DoppleGanger<T> : IEnumerator<T>
+sealed class DoppelGanger<T> : IDoppelGanger<T>
+#if NETFX
+    , ICloneable
+#endif
 {
     IPlexBeaconPin<T> _Held;
 
-    public DoppleGanger(IPlexBeaconPin<T> held)
+    public DoppelGanger(IPlexBeaconPin<T> held)
     {
         _Held = held;
     }
@@ -40,4 +43,10 @@ sealed class DoppleGanger<T> : IEnumerator<T>
     }
     public void Dispose()
         => _Held = null;
+
+    public IDoppelGanger<T> Clone()
+        => new DoppelGanger<T>(_Held);
+#if NETFX
+    object ICloneable.Clone() => Clone();
+#endif
 }
